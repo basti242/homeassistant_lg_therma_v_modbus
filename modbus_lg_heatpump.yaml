@@ -1,0 +1,651 @@
+# Home Assistant LG Heatpump integration
+# last update: 2023-10-04 (for update 2013.10)
+
+modbus:
+  - name: "lg_heatpump"
+    type: tcp
+    host: !secret lg_heatpump_modbus_host_ip
+    port: !secret lg_heatpump_modbus_port
+    retries: 5
+
+
+    sensors:
+      # Technische Daten
+      #------------------------------------------
+
+      - name: "hp_odu_operation_cycle"
+        scan_interval: 10
+        address: 1
+        slave: !secret lg_heatpump_modbus_slave
+        input_type: input
+
+      - name: hp_inlet_temp
+        scale: 0.1
+        precision: 1
+        scan_interval: 30
+        address: 2 # reg 3
+        slave: !secret lg_heatpump_modbus_slave
+        unit_of_measurement: °C
+        device_class: temperature
+        input_type: input
+
+      - name: "hp_outlet_temp"
+        scale: 0.1
+        precision: 1
+        scan_interval: 30
+        address: 3 # reg 4
+        slave: !secret lg_heatpump_modbus_slave
+        unit_of_measurement: °C
+        device_class: temperature
+        input_type: input
+
+      - name: hp_dhw_water_temp
+        scale: 0.1
+        precision: 1
+        scan_interval: 30
+        address: 5 # reg 6
+        slave: !secret lg_heatpump_modbus_slave
+        unit_of_measurement: °C
+        device_class: temperature
+        input_type: input
+
+      - name: "hp_temp_technikraum" # Temperatur Technikraum
+        precision: 1
+        scan_interval: 10
+        address: 7
+        slave: !secret lg_heatpump_modbus_slave
+        scale: 0.1
+        device_class: temperature
+        unit_of_measurement: "°C"
+        input_type: input
+
+      - name: "hp_flow_rate"
+        precision: 1
+        scale: 0.1
+        scan_interval: 10
+        address: 8
+        slave: !secret lg_heatpump_modbus_slave
+        unit_of_measurement: "l/min"
+        input_type: input
+
+      - name: "hp_flow_temp_circle_2"
+        scale: 0.1
+        precision: 1
+        scan_interval: 10
+        address: 9 # reg 10
+        slave: !secret lg_heatpump_modbus_slave
+        device_class: temperature
+        unit_of_measurement: °C
+        input_type: input
+
+      - name: "hp_outside_temp" # Außentemperatur
+        precision: 1
+        scan_interval: 10
+        address: 12
+        slave: !secret lg_heatpump_modbus_slave
+        scale: 0.1
+        device_class: temperature
+        unit_of_measurement: "°C"
+        input_type: input
+
+      - name: temp_liquid_gas # Temperatur Flüssiggas
+        scan_interval: 10
+        address: 16
+        unit_of_measurement: "°C"
+        slave: !secret lg_heatpump_modbus_slave
+        input_type: input
+
+      - name: temp_suction # Temperatur Absaugung
+        scan_interval: 2
+        address: 18
+        unit_of_measurement: °C
+        slave: !secret lg_heatpump_modbus_slave
+        input_type: input
+
+      - name: temp_heatgas # Heißgastemperatur
+        address: 19
+        unit_of_measurement: °C
+        slave: !secret lg_heatpump_modbus_slave
+        input_type: input
+
+      - name: temp_before_vaporiser # Dampftemperatur vor Verdampfer
+        scan_interval: 10
+        address: 20
+        device_class: temperature
+        unit_of_measurement: "°C"
+        slave: !secret lg_heatpump_modbus_slave
+        input_type: input
+
+      - name: temp_after_vaporiser # Dampftemperatur nach Verdampfer
+        scan_interval: 10
+        address: 21
+        device_class: temperature
+        unit_of_measurement: "°C"
+        slave: !secret lg_heatpump_modbus_slave
+        input_type: input
+
+      - name: hight_pressure # Dampfdruck Kondensator
+        address: 22
+        unit_of_measurement: Bar
+        slave: !secret lg_heatpump_modbus_slave
+        input_type: input
+
+      - name: low_pressure # Dampfdruck Verdampfer
+        address: 23
+        unit_of_measurement: Bar
+        slave: !secret lg_heatpump_modbus_slave
+        input_type: input
+
+      - name: hp_compressor_rpm # Kompressordrehzahl
+        scale: 60
+        precision: 0.1
+        scan_interval: 10
+        address: 24
+        slave: !secret lg_heatpump_modbus_slave
+        unit_of_measurement: U/min
+        input_type: input
+
+      - name: "hp_product_info" # Produktinfos
+        scan_interval: 60
+        address: 9998
+        slave: !secret lg_heatpump_modbus_slave
+        input_type: input
+
+#------------------------------------------
+# Holding Register
+#------------------------------------------
+
+      - name: hp_operation_mode
+        scan_interval: 60
+        address: 0
+        slave: !secret lg_heatpump_modbus_slave
+        input_type: holding
+
+      - name: hp_control_method
+        scan_interval: 60
+        address: 1
+        slave: !secret lg_heatpump_modbus_slave
+        input_type: holding
+
+
+      - name: hp_target_temp_circuit1 #Zieltemperatur HK1 (Heizkörper)
+        scale: 0.1
+        precision: 1
+        scan_interval: 30
+        address: 2
+        slave: !secret lg_heatpump_modbus_slave
+        unit_of_measurement: °C
+        input_type: holding
+
+
+      - name: hp_shift_value_in_auto_mode_circuit1 #Sollwertverschiebung HK1 (Heizkörper)
+        precision: 1 #test
+        scan_interval: 30
+        address: 4
+        #data_type: int16
+        slave: !secret lg_heatpump_modbus_slave
+        unit_of_measurement: °C
+        input_type: holding
+
+
+      - name: hp_target_temp_circuit2 #Zieltemperatur HK2 (Fußbodenheizung)
+        scale: 0.1
+        precision: 1
+        scan_interval: 30
+        address: 5
+        slave: !secret lg_heatpump_modbus_slave
+        unit_of_measurement: °C
+        input_type: holding
+
+
+      - name: hp_shift_value_in_auto_mode_circuit2 #Sollwertverschiebung HK2 (Fußbodenheizung)
+        precision: 1 #test
+        scan_interval: 30
+        address: 7
+        #data_type: int16
+        slave: !secret lg_heatpump_modbus_slave
+        unit_of_measurement: °C
+        input_type: holding
+
+
+      - name: hp_dhw_target_temp #DHW Zieltemperatur
+        scale: 0.1
+        precision: 1
+        scan_interval: 30
+        address: 8
+        slave: !secret lg_heatpump_modbus_slave
+        unit_of_measurement: °C
+        input_type: holding
+
+
+      - name: hp_energy_state_input_raw
+        slave: !secret lg_heatpump_modbus_slave
+        scan_interval: 10
+        address: 9 # reg 10
+        input_type: holding
+
+# -------------------------------------------------
+# coil_register (binäre Daten, nur schreiben)
+# -------------------------------------------------
+
+    switches:
+      - name: "switch_heizung"
+        slave: !secret lg_heatpump_modbus_slave # Wärmepumpe an/aus
+        address: 0
+        write_type: coil
+        command_on: 1
+        command_off: 0
+        verify:
+          input_type: coil
+          address: 0
+          state_on: 1
+          state_off: 0
+
+      - name: "switch_warmwasser" # Warmwasserbereitung an/aus
+        unique_id: hp_warmwasser
+        slave: !secret lg_heatpump_modbus_slave
+        address: 1
+        write_type: coil
+        command_on: 1
+        command_off: 0
+        verify:
+          input_type: coil
+          address: 1
+          state_on: 1
+          state_off: 0
+
+      - name: "switch_silent_mode" # Ruhemodus an/aus
+        slave: !secret lg_heatpump_modbus_slave
+        address: 2
+        write_type: coil
+        command_on: 1
+        command_off: 0
+        verify:
+          input_type: coil
+          address: 2
+          state_on: 1
+          state_off: 0
+
+      - name: "hp_dhw_desinfection_mode" # Desinfektionsmodus an/aus
+        slave: !secret lg_heatpump_modbus_slave
+        address: 3
+        write_type: coil
+        command_on: 1
+        command_off: 0
+        verify:
+          input_type: coil
+          address: 3
+          state_on: 1
+          state_off: 0
+
+
+#------------------------------------------
+# discrete_input (binäre Daten, nur lesen)
+# -----------------------------------------
+    binary_sensors:
+      - name: hp_water_flow_status
+        scan_interval: 30
+        address: 0
+        slave: !secret lg_heatpump_modbus_slave
+        input_type: discrete_input
+
+      - name: hp_water_pump_status
+        scan_interval: 30
+        address: 1
+        slave: !secret lg_heatpump_modbus_slave
+        input_type: discrete_input
+
+      - name: hp_ext_water_pump_status
+        scan_interval: 30
+        address: 2
+        slave: !secret lg_heatpump_modbus_slave
+        input_type: discrete_input
+
+      - name: hp_compressor_status
+        scan_interval: 30
+        address: 3
+        slave: !secret lg_heatpump_modbus_slave
+        input_type: discrete_input
+
+      - name: hp_defrosting_status
+        scan_interval: 30
+        address: 4
+        slave: !secret lg_heatpump_modbus_slave
+        input_type: discrete_input
+
+      - name: hp_dhw_heating_status
+        scan_interval: 30
+        address: 5
+        slave: !secret lg_heatpump_modbus_slave
+        input_type: discrete_input
+
+      - name: hp_dhw_tank_disinfection_status
+        scan_interval: 30
+        address: 6
+        slave: !secret lg_heatpump_modbus_slave
+        input_type: discrete_input
+
+      - name: hp_silent_mode_status
+        scan_interval: 30
+        address: 7
+        slave: !secret lg_heatpump_modbus_slave
+        input_type: discrete_input
+
+      - name: hp_cooling_status
+        scan_interval: 30
+        address: 8
+        slave: !secret lg_heatpump_modbus_slave
+        input_type: discrete_input
+
+      - name: hp_backup_heater_step1_status
+        scan_interval: 30
+        address: 10
+        slave: !secret lg_heatpump_modbus_slave
+        input_type: discrete_input
+
+      - name: hp_backup_heater_step2_status
+        scan_interval: 30
+        address: 11
+        slave: !secret lg_heatpump_modbus_slave
+        input_type: discrete_input
+
+      - name: hp_dhw_boost_heater_status
+        scan_interval: 30
+        address: 12
+        slave: !secret lg_heatpump_modbus_slave
+        input_type: discrete_input
+
+      - name: hp_error_status
+        scan_interval: 30
+        address: 13
+        slave: !secret lg_heatpump_modbus_slave
+        input_type: discrete_input
+
+      - name: hp_emergency_operation_available_space_heating/cooling
+        scan_interval: 30
+        address: 14
+        slave: !secret lg_heatpump_modbus_slave
+        input_type: discrete_input
+
+      - name: hp_emergency_operation_available_dhw
+        scan_interval: 30
+        address: 15
+        slave: !secret lg_heatpump_modbus_slave
+        input_type: discrete_input
+
+      - name: hp_mix_pump_status
+        scan_interval: 30
+        address: 16
+        slave: !secret lg_heatpump_modbus_slave
+        input_type: discrete_input
+
+#------------------------------------------
+# Input Number
+# -----------------------------------------
+input_number:
+  hp_shift_value_in_auto_mode_circuit1:
+    name: Set HP Sollwertverschiebung im AI Modus - HK1 (Heizkörper)
+    min: -5
+    max: 5
+    step: 1
+
+  hp_shift_value_in_auto_mode_circuit2:
+    name: Set HP Sollwertverschiebung im AI Modus - HK2 (Fußbodenheizung)
+    min: -5
+    max: 5
+    step: 1
+
+  hp_dhw_target_temperatur:
+    name: Soll Temperatur DHW
+    min: 45
+    max: 60
+    step: 5
+
+#------------------------------------------
+# Input Select
+# -----------------------------------------
+input_select:
+  hp_set_operating_mode:
+    name: "Selector Heatpump Operation Mode"
+    options:
+      - "Kühlen"
+      - "Heizen"
+      - "Auto"
+
+  hp_set_control_method:
+    name: "Selector Heatpump Control Method"
+    options:
+      - "Wasserauslasstemp. Steuerung"
+      - "Wassereinlasstemp. Steuerung"
+      - "Raumluftsteuerung"
+
+#------------------------------------------
+# Template sensors for better readability
+# -----------------------------------------
+template:
+  - binary_sensor:
+      - name: "HP Energy State - Nicht verwenden"
+        unique_id: hp_energy_state_nicht_verwenden"
+        state: >
+          {{ states('sensor.hp_energy_state_input_raw')|int(default=0) == 0 }}
+
+      - name: "HP Energy State - Erzwungen Aus"
+        unique_id: hp_energy_state_erzwungen_aus"
+        state: >
+          {{ states('sensor.hp_energy_state_input_raw')|int(default=0) == 1 }}
+
+      - name: "HP Energy State - Normalbetrieb"
+        unique_id: hp_energy_state_normalbetrieb"
+        state: >
+          {{ states('sensor.hp_energy_state_input_raw')|int(default=0) == 2 }}
+
+      - name: "HP Energy State - Ein-Empfehlung"
+        unique_id: hp_energy_state_ein_empfehlung"
+        state: >
+          {{ states('sensor.hp_energy_state_input_raw')|int(default=0) == 3 }}
+
+      - name: "HP Energy State - Ein-Befehl"
+        unique_id: "hp_energy_state_ein_befehl"
+        state: >
+          {{ states('sensor.hp_energy_state_input_raw')|int(default=0) == 4 }}
+
+      - name: "HP Energy State - Ein-Befehl Schritt 2"
+        unique_id: hp_energy_state_ein_befehl_schritt_2"
+        state: >
+          {{ states('sensor.hp_energy_state_input_raw')|int(default=0) == 5 }}
+
+      - name: "HP Energy State - Ein-Empfehlung Schritt 1"
+        unique_id: hp_energy_state_ein_empfehlung_befehl_schritt_1"
+        state: >
+          {{ states('sensor.hp_energy_state_input_raw')|int(default=0) == 6 }}
+
+      - name: "HP Energy State - Energiesparmodus"
+        unique_id: hp_energy_state_ein_energiesparmodus"
+        state: >
+          {{ states('sensor.hp_energy_state_input_raw')|int(default=0) == 7 }}
+
+      - name: "HP Energy State - Superenergiesparmodus"
+        unique_id: hp_energy_state_ein_superenergiesparmodus"
+        state: >
+          {{ states('sensor.hp_energy_state_input_raw')|int(default=0) == 8 }}
+
+
+# ---------------------------------------------------------------------------------------------------------------
+# Automations: Write modbus registers on input changes via GUI
+# note: If you change a value by the sliders, it will take up to 60 seconds until the state variables are updated
+# ---------------------------------------------------------------------------------------------------------------
+
+automation:
+- id: "hp_automation_operation_mode"
+  alias: "[Heatpump] Operation Mode"
+  description: "Select Operating Mode of Heatpump"
+  trigger:
+    - platform: state
+      entity_id:
+        - input_select.hp_set_operating_mode
+  condition: []
+  variables:
+    kuehlen: 0
+    auto: 3
+    heizen: 4
+  action:
+    - service: modbus.write_register
+      data_template:
+        hub: lg_heatpump
+        slave: !secret lg_heatpump_modbus_slave
+        address: 0
+        value: >-
+          {% if is_state('input_select.hp_set_operating_mode', 'Kühlen') %} {{kuehlen}}
+          {% elif is_state('input_select.hp_set_operating_mode', 'Heizen') %} {{heizen}}
+          {% else %}
+          {{auto}}
+          {% endif %}
+  mode: single
+
+- id: "hp_automation_control_method"
+  alias: "[Heatpump] Control Method"
+  description: "Select Control Method of Heatpump"
+  trigger:
+    - platform: state
+      entity_id:
+        - input_select.hp_set_control_method
+  condition: []
+  variables:
+    auslass: 0
+    einlass: 1
+    raumluft: 2
+  action:
+    - service: modbus.write_register
+      data_template:
+        hub: lg_heatpump
+        slave: !secret lg_heatpump_modbus_slave
+        address: 1
+        value: >-
+          {% if is_state('input_select.hp_set_control_method', 'Wasserauslasstemp. Steuerung') %} 
+          {{auslass}}
+          {% elif is_state('input_select.hp_set_control_method', 'Wassereinlasstemp. Steuerung') %} 
+          {{einlass}}
+          {% else %}
+          {{raumluft}}
+          {% endif %}
+  mode: single
+
+### Sollwertverschiebung von Heizkreis 1 (Heizkörper)###
+#-------------------------------------------------------------------------------
+
+- id: "hp_automation_set_shift_value_in_auto_mode_circuit1_modbus_update"
+  alias: "hp_automation_set_shift_value_in_auto_mode_circuit1_modbus_update"
+  description: "Änderung der Vorlauftemperatur HK1 im AI Modus auf Modbus schreiben"
+  trigger:
+    - platform: state
+      entity_id:
+        - input_number.hp_shift_value_in_auto_mode_circuit1
+  condition: []
+  action:
+    - service: modbus.write_register
+      data_template:
+        hub: lg_heatpump
+        slave: !secret lg_heatpump_modbus_slave
+        address: 4
+        value: >
+          {% if states('input_number.hp_shift_value_in_auto_mode_circuit1') | int(default=0) < 0 %} 
+          {{states('input_number.hp_shift_value_in_auto_mode_circuit1') | int + 65536 }}
+          {% else %}
+          {{states('input_number.hp_shift_value_in_auto_mode_circuit1') | int }}
+          {% endif %}
+  mode: single
+
+- id: "hp_automation_set_shift_value_in_auto_mode_circuit1_input_slider_update"
+  alias: "hp_automation_set_shift_value_in_auto_mode_circuit1_input_slider_update"
+  description: "Änderung der Vorlauftemperatur HK1 im AI Modus auf Input Slider schreiben"
+  trigger:
+    - platform: state
+      entity_id:
+        - sensor.hp_shift_value_in_auto_mode_circuit1
+  condition: []
+  action:
+    - service: input_number.set_value
+      target:
+        entity_id: input_number.set_hp_shift_value_in_auto_mode_circuit1
+      data:
+        value: "{{ states('sensor.hp_shift_value_in_auto_mode_circuit1') }}"
+  mode: single
+
+### Sollwertverschiebung von Heizkreis 2 (Fußbodenheizung)###
+#-------------------------------------------------------------------------------
+
+- id: "hp_automation_set_shift_value_in_auto_mode_circuit2_modbus_update"
+  alias: "hp_automation_set_shift_value_in_auto_mode_circuit2_modbus_update"
+  description: "Änderung der Vorlauftemperatur HK2 im AI Modus auf Modbus schreiben"
+  trigger:
+    - platform: state
+      entity_id:
+        - input_number.hp_shift_value_in_auto_mode_circuit2
+  condition: []
+  action:
+    - service: modbus.write_register
+      data_template:
+        hub: lg_heatpump
+        slave: !secret lg_heatpump_modbus_slave
+        address: 7
+        value: >
+            {% if states('input_number.hp_shift_value_in_auto_mode_circuit2') | int(default=0) < 0 %} 
+            {{states('input_number.hp_shift_value_in_auto_mode_circuit2') | int + 65536 }}
+            {% else %}
+            {{states('input_number.hp_shift_value_in_auto_mode_circuit2') | int }}
+            {% endif %}
+  mode: single
+
+- id: "hp_automation_set_shift_value_in_auto_mode_circuit2_input_slider_update"
+  alias: "hp_automation_set_shift_value_in_auto_mode_circuit2_input_slider_update"
+  description: "Änderung der Vorlauftemperatur HK2 im AI Modus auf Input Slider schreiben"
+  trigger:
+    - platform: state
+      entity_id:
+        - sensor.hp_shift_value_in_auto_mode_circuit2
+  condition: []
+  action:
+    - service: input_number.set_value
+      target:
+        entity_id: input_number.hp_shift_value_in_auto_mode_circuit2
+      data:
+        value: "{{ states('sensor.hp_shift_value_in_auto_mode_circuit2') }}"
+  mode: single
+
+
+  ### DHW Solltemperatur ###
+#-------------------------------------------------------------------------------
+
+- id: "hp_automation_set_target_temperatur_modbus_update"
+  alias: "hp_automation_set_target_temperatur_modbus_update"
+  description: "Änderung der DHW Solltemperatur auf Modbus schreiben"
+  trigger:
+    - platform: state
+      entity_id:
+        - input_number.hp_dhw_target_temperatur
+  condition: []
+  action:
+    - service: modbus.write_register
+      data_template:
+        hub: lg_heatpump
+        slave: !secret lg_heatpump_modbus_slave
+        address: 8
+        value: "{{ states('input_number.hp_dhw_target_temperatur') |float *10 | int}}"
+  mode: single
+
+- id: "hp_automation_set_target_temperatur_input_slider_update"
+  alias: "hp_automation_set_target_temperatur_input_slider_update"
+  description: "Änderung der DHW Solltemperatur auf Input Slider schreiben"
+  trigger:
+    - platform: state
+      entity_id:
+        - sensor.hp_dhw_target_temp
+  condition: []
+  action:
+    - service: input_number.set_value
+      target:
+        entity_id: input_number.hp_dhw_target_temperatur
+      data:
+        value: "{{ states('sensor.dhw_target_temperatur') }}"
+  mode: single
+
