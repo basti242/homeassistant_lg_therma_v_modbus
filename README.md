@@ -5,7 +5,9 @@
 [Description](#description)  
 [Basics](#basics)  
 [How to install](#howtoinstall)  
-  [Gateway](#gateway)  
+> [Gateway](#gateway)  
+> [Homeassistant](#homeassistant)  
+> [Heatpump](#heatpump) 
 
 ## Description <a name="description"></a>
 This package is for connecting and controlling an LG Therma V heat pump with Homeassistant via modbus.  
@@ -22,7 +24,7 @@ In my case, i use a [Waveshare Industrial RS232/RS485 to Ethernet Converter](htt
 ### Gateway <a name="gateway"></a>
 ![IMG_4261](https://github.com/user-attachments/assets/59bbd424-c406-4b6a-b33f-670361443392)
 
-### Homeassistant
+### Homeassistant <a name="homeassistant"></a>
 Download the *modbus_lg_heatpump.yaml*
 
 Put the file in a folder named *integrations*. Create the folder if not exist.
@@ -37,16 +39,16 @@ Add a reference to your integration folder in your *configuration.yaml*.
 Set the secrets in your *secrets.yaml* file
 
 
-### Heatpump
-#### Hardware settings
-##### Wire connection between heatpump and gateway.  
+### Heatpump <a name="heatpump"></a>
+**Hardware settings**  
+Wire connection between heatpump and gateway.  
 Inside the heatpump you will find a connector named "3rd PARTY CONTROLLER". This is the connector for the modbus wire. The wire must be connected to contact A (+) and B(-).  
 
 ![connection_heatpump](https://github.com/user-attachments/assets/258c3483-5fb1-4e9a-a41a-709377e070ff)
 
 
 
-##### Dip switch inside the heatpump. 
+Dip switch inside the heatpump
 *Settings for 4er series*  
 On the main bord of the heatpump are 2 dip switch banks, SW1 and SW2.
 For us are the settings from SW1 important.  
@@ -58,7 +60,7 @@ SW1 dip 2 - ON --> The heat pump is using a open protokoll.
 
 
 
-#### Software settings
+**Software settings**  
 It is also required to set some options on the inside head unit. 
   
 ![image](https://github.com/user-attachments/assets/b78ce590-2876-4b27-9264-40c5444da8b5)
