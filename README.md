@@ -42,7 +42,11 @@ Inside the heatpump you will find a connector named "3rd PARTY CONTROLLER". This
 
 
 ##### Dip switch inside the heatpump.  
-...  
+On the main bord of the heatpump are 2 dip switch banks, SW1 and SW2.
+For us are the settings from SW1 important.  
+SW1 dip 1 - ON --> The heat pump is set as a Modbus slave device.  
+SW1 dip 2 - ON --> The heat pump is using a open protokoll.
+
 #### Software settings
 ...
 
