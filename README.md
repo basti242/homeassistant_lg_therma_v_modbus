@@ -12,7 +12,7 @@
 ## Description <a name="description"></a>
 This package is for connecting and controlling an LG Therma V heat pump with Homeassistant via modbus.  
 This manual is tested with:
-- LG Therma V ...
+- LG Therma V Monoblock 9kW
 
 ## Basics  <a name="basics"></a>
 The LG Heatpump is only availiable to communicate via RS485/Modbus TCP . The best way to connect them with Homeassistant is a Modbus TCP Gateway.
@@ -61,7 +61,7 @@ SW1 dip 2 - ON --> The heat pump is using a open protokoll.
 
 
 **Software settings**  
-It is also required to set some options on the inside head unit. 
+It is also required to set some options on the inside LG head unit (LG RS3). 
   
 ![image](https://github.com/user-attachments/assets/b78ce590-2876-4b27-9264-40c5444da8b5)
 
