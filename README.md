@@ -15,7 +15,8 @@ This manual is tested with:
 The LG Heatpump is only availiable to communicate via RS485/Modbus TCP . The best way to connect them with Homeassistant is a Modbus TCP Gateway.
 For example a [Waveshare Industrial RS232/RS485 to Ethernet Converter](https://www.waveshare.com/rs232-485-to-eth-for-eu.htm).
 
-![converter](https://github.com/user-attachments/assets/c2cadb83-e3a9-4593-92a9-ddbca321a4e0)
+![Converter](https://github.com/user-attachments/assets/36b88e14-a3f1-4fcb-9d65-a4cfd5b065c2)
+
 
 With this integration, you are able to controll nearly all settings of your heatpump.  
 
