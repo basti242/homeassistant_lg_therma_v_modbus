@@ -54,7 +54,7 @@ lg_heatpump_modbus_host_ip: 10.10.1.### #change it to the IP adress from your ga
 lg_heatpump_modbus_port: 502
 lg_heatpump_modbus_slave: 1
 ```
-
+Restart your Homeassistant
 
 ## Heatpump <a name="heatpump"></a>
 **Hardware settings**  
@@ -88,5 +88,3 @@ It is also required to set some options on the inside LG head unit (LG RS3).
 ![image](https://github.com/user-attachments/assets/8f63e8f5-6eb2-4a65-a723-41daf5b122db)
 
 
-
-Restart your Homeassistant
