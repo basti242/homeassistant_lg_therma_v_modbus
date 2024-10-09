@@ -3,7 +3,7 @@
 
 
 ## Description
-This package is for connecting an LG Therma V heat pump with Homeassistant via Modbus.
+This package is for connecting and controlling an LG Therma V heat pump with Homeassistant via modbus.
 
 ## Basics
 The LG Heatpump is only availiable to communicate via RS485/Modbus TCP . The best way to connect them with Homeassistant is a Modbus TCP Gateway.
@@ -15,10 +15,11 @@ In my case, i use a [Waveshare Industrial RS232/RS485 to Ethernet Converter](htt
 ### Homeassistant
 ...
 ### Heatpump
+#### Hardware settings
 ...
-
+#### Software settings
+...
 ## How to install
-
 
 Download the modbus_lg_heatpump.yaml
 
