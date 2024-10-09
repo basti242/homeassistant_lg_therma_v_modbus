@@ -88,4 +88,6 @@ It is also required to set some options on the inside LG head unit (LG RS3).
 
 ![image](https://github.com/user-attachments/assets/8f63e8f5-6eb2-4a65-a723-41daf5b122db)
 
+**That’s it! You can now control the heat pump from Homeassistant.**
+
 
