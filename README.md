@@ -2,9 +2,9 @@
 # This is under construction!!!
 
 # Table of Contents
-1. [Description](#description)
-2. [Preparations](#preparations)
-3. [How to install](#howtoinstall)
+[Description](#description)
+[Basics](#basics)
+[How to install](#howtoinstall)
 
 ## Description <a name="description"></a>
 This package is for connecting and controlling an LG Therma V heat pump with Homeassistant via modbus.
@@ -15,12 +15,21 @@ In my case, i use a [Waveshare Industrial RS232/RS485 to Ethernet Converter](htt
 
 ![converter](https://github.com/user-attachments/assets/c2cadb83-e3a9-4593-92a9-ddbca321a4e0)
 
-## Preparations  <a name="preparations"></a>
+## How to install  <a name="howtoinstall"></a>
 ### Gateway
 ![IMG_4261](https://github.com/user-attachments/assets/59bbd424-c406-4b6a-b33f-670361443392)
 
 ### Homeassistant
-...
+Download the modbus_lg_heatpump.yaml
+
+Put the file in a folder named integrations. Create the folder if not exist.
+
+![image](https://github.com/user-attachments/assets/b85ebb60-3963-4d8f-8c68-fa098d60591b)
+
+
+Add a reference to your integration folder in your configuration.yaml.
+
+![image](https://github.com/user-attachments/assets/be2b6c9a-6929-47da-984c-66d7c3457f64)
 ### Heatpump
 #### Hardware settings
 ##### Wire connection between heatpump and gateway.  
@@ -34,18 +43,9 @@ Inside the heatpump you will find a connector named "3rd PARTY CONTROLLER". This
 ...  
 #### Software settings
 ...
-## How to install  <a name="howtoinstall"></a>
-
-Download the modbus_lg_heatpump.yaml
-
-Put the file in a folder named integrations. Create the folder if not exist.
-
-![image](https://github.com/user-attachments/assets/b85ebb60-3963-4d8f-8c68-fa098d60591b)
 
 
-Add a reference to your integration folder in your configuration.yaml.
 
-![image](https://github.com/user-attachments/assets/be2b6c9a-6929-47da-984c-66d7c3457f64)
 
 Set the secrets in your secrets.yaml file
 
