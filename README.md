@@ -49,6 +49,10 @@ For us are the settings from SW1 important.
 SW1 dip 1 - ON --> The heat pump is set as a Modbus slave device.  
 SW1 dip 2 - ON --> The heat pump is using a open protokoll.
 
+![image](https://github.com/user-attachments/assets/9759fe76-785b-43c3-9957-14483a88a61e)
+
+
+
 #### Software settings
 ...
 
