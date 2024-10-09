@@ -1,4 +1,4 @@
-# Table of Contents
+
 [Description](#description)  
 [Basics](#basics)  
 [How to install](#howtoinstall)  
