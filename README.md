@@ -13,13 +13,15 @@ In my case, i use a [Waveshare Industrial RS232/RS485 to Ethernet Converter](htt
 
 ## Preparations
 ### Gateway
-...
+![IMG_4261](https://github.com/user-attachments/assets/59bbd424-c406-4b6a-b33f-670361443392)
+
 ### Homeassistant
 ...
 ### Heatpump
 #### Hardware settings
 ##### Wire connection between heatpump and gateway.  
 Inside the heatpump you will find a connector named "3rd PARTY CONTROLLER". This is the connector for the modbus wire. The wire must be connected to contact A (+) and B(-).  
+
 ![connection_heatpump](https://github.com/user-attachments/assets/258c3483-5fb1-4e9a-a41a-709377e070ff)
 
 
