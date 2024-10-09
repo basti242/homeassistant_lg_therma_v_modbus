@@ -20,6 +20,8 @@ In my case, i use a [Waveshare Industrial RS232/RS485 to Ethernet Converter](htt
 
 ![converter](https://github.com/user-attachments/assets/c2cadb83-e3a9-4593-92a9-ddbca321a4e0)
 
+With this integration, you are able to controll nearly all settings of your heatpump.  
+
 ## How to install  <a name="howtoinstall"></a>
 ### Gateway <a name="gateway"></a>
 ![IMG_4261](https://github.com/user-attachments/assets/59bbd424-c406-4b6a-b33f-670361443392)
