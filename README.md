@@ -1,7 +1,7 @@
 
 # This is under construction!!!
 
-# Table of Contents
+## Table of Contents
 [Description](#description)  
 [Basics](#basics)  
 [How to install](#howtoinstall)  
