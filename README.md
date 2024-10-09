@@ -18,8 +18,8 @@ In my case, i use a [Waveshare Industrial RS232/RS485 to Ethernet Converter](htt
 #### Hardware settings
 ##### Wire connection between heatpump and gateway.  
 Inside the heatpump you will find a connector named "3rd PARTY CONTROLLER". This is the connector for the modbus wire. The wire must be connected to contact A (+) and B(-).
-...  
-Dip switch inside the heatpump.  
+ 
+##### Dip switch inside the heatpump.  
 ...  
 #### Software settings
 ...
