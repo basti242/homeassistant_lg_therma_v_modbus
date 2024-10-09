@@ -5,6 +5,7 @@
 [Description](#description)  
 [Basics](#basics)  
 [How to install](#howtoinstall)  
+  [Gateway](#gateway)  
 
 ## Description <a name="description"></a>
 This package is for connecting and controlling an LG Therma V heat pump with Homeassistant via modbus.  
@@ -18,7 +19,7 @@ In my case, i use a [Waveshare Industrial RS232/RS485 to Ethernet Converter](htt
 ![converter](https://github.com/user-attachments/assets/c2cadb83-e3a9-4593-92a9-ddbca321a4e0)
 
 ## How to install  <a name="howtoinstall"></a>
-### Gateway
+### Gateway <a name="gateway"></a>
 ![IMG_4261](https://github.com/user-attachments/assets/59bbd424-c406-4b6a-b33f-670361443392)
 
 ### Homeassistant
