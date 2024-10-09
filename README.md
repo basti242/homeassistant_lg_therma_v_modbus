@@ -50,7 +50,7 @@ Set the secrets in your *secrets.yaml* file
 ```yaml
 # LG Heatpump
 #-----------------------------------------------
-lg_heatpump_modbus_host_ip: 10.10.1.### #change it to the IP adress from your gateway
+lg_heatpump_modbus_host_ip: 10.10.1.xxx #change it to the IP adress from your gateway
 lg_heatpump_modbus_port: 502
 lg_heatpump_modbus_slave: 1
 ```
