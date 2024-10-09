@@ -21,6 +21,7 @@ For example a [Waveshare Industrial RS232/RS485 to Ethernet Converter](https://w
 With this integration, you are able to controll nearly all settings of your heatpump.  
 
 **Examples**  
+
 ![image](https://github.com/user-attachments/assets/85a27c31-40ee-468f-ba29-5d5f2826946a)  ![image](https://github.com/user-attachments/assets/2667a9a6-823b-4b5f-9487-f319fcc84b4f)
 
 
@@ -30,7 +31,7 @@ With this integration, you are able to controll nearly all settings of your heat
 ![IMG_4261](https://github.com/user-attachments/assets/59bbd424-c406-4b6a-b33f-670361443392)
 
 ## Homeassistant <a name="homeassistant"></a>
-Download the *modbus_lg_heatpump.yaml*
+Download the [*modbus_lg_heatpump.yaml*](https://github.com/basti242/homeassistant_lg_therma_v_modbus/blob/main/modbus_lg_heatpump.yaml)
 
 Put the file in a folder named *integrations*. Create the folder if not exist.
 
