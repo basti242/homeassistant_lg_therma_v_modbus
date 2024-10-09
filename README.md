@@ -29,14 +29,26 @@ Download the *modbus_lg_heatpump.yaml*
 
 Put the file in a folder named *integrations*. Create the folder if not exist.
 
+
+
 ![image](https://github.com/user-attachments/assets/b85ebb60-3963-4d8f-8c68-fa098d60591b)
 
 
-Add a reference to your integration folder in your *configuration.yaml*.
-
-![image](https://github.com/user-attachments/assets/be2b6c9a-6929-47da-984c-66d7c3457f64)
+Add a reference to your integration folder in your *configuration.yaml*. The *homeassistant:* line should be still there.
+```yaml
+homeassistant:
+  packages: !include_dir_named integrations
+```
 
 Set the secrets in your *secrets.yaml* file
+
+```yaml
+# LG Heatpump
+#-----------------------------------------------
+lg_heatpump_modbus_host_ip: 10.10.1.### #change it to the IP adress from your gateway
+lg_heatpump_modbus_port: 502
+lg_heatpump_modbus_slave: 1
+```
 
 
 ### Heatpump <a name="heatpump"></a>
