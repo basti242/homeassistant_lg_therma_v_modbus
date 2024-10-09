@@ -7,7 +7,7 @@
 [How to install](#howtoinstall)  
 
 ## Description <a name="description"></a>
-This package is for connecting and controlling an LG Therma V heat pump with Homeassistant via modbus.
+This package is for connecting and controlling an LG Therma V heat pump with Homeassistant via modbus.  
 This manual is tested with:
 - LG Therma V ...
 
