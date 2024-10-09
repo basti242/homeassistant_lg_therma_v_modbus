@@ -1,7 +1,4 @@
-
-# This is under construction!!!
-
-## Table of Contents
+# Table of Contents
 [Description](#description)  
 [Basics](#basics)  
 [How to install](#howtoinstall)  
@@ -9,12 +6,12 @@
 > [Homeassistant](#homeassistant)  
 > [Heatpump](#heatpump) 
 
-## Description <a name="description"></a>
+# Description <a name="description"></a>
 This package is for connecting and controlling an LG Therma V heat pump with Homeassistant via modbus.  
 This manual is tested with:
 - LG Therma V Monoblock 9kW
 
-## Basics  <a name="basics"></a>
+# Basics  <a name="basics"></a>
 The LG Heatpump is only availiable to communicate via RS485/Modbus TCP . The best way to connect them with Homeassistant is a Modbus TCP Gateway.
 In my case, i use a [Waveshare Industrial RS232/RS485 to Ethernet Converter](https://www.waveshare.com/rs232-485-to-eth-for-eu.htm).
 
@@ -27,11 +24,11 @@ With this integration, you are able to controll nearly all settings of your heat
 
 
 
-## How to install  <a name="howtoinstall"></a>
+# How to install  <a name="howtoinstall"></a>
 ### Gateway <a name="gateway"></a>
 ![IMG_4261](https://github.com/user-attachments/assets/59bbd424-c406-4b6a-b33f-670361443392)
 
-### Homeassistant <a name="homeassistant"></a>
+## Homeassistant <a name="homeassistant"></a>
 Download the *modbus_lg_heatpump.yaml*
 
 Put the file in a folder named *integrations*. Create the folder if not exist.
@@ -58,7 +55,7 @@ lg_heatpump_modbus_slave: 1
 ```
 
 
-### Heatpump <a name="heatpump"></a>
+## Heatpump <a name="heatpump"></a>
 **Hardware settings**  
 Wire connection between heatpump and gateway.  
 Inside the heatpump you will find a connector named "3rd PARTY CONTROLLER". This is the connector for the modbus wire. The wire must be connected to contact A (+) and B(-).  
