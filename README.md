@@ -58,10 +58,14 @@ SW1 dip 2 - ON --> The heat pump is using a open protokoll.
 
 
 #### Software settings
-...
+It is also required to set some options on the inside head unit. 
+  
+![image](https://github.com/user-attachments/assets/b78ce590-2876-4b27-9264-40c5444da8b5)
 
+1. Navigate to Settings
+2. ...
 
-
+![image](https://github.com/user-attachments/assets/8f63e8f5-6eb2-4a65-a723-41daf5b122db)
 
 
 
