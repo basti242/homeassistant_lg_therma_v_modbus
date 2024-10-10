@@ -57,6 +57,21 @@ lg_heatpump_modbus_slave: 1
 ```
 Restart your Homeassistant
 
+Here is a code example for the UI.
+```yaml
+type: entities
+entities:
+  - entity: input_select.hp_set_operation_mode
+    name: Operation Mode
+  - entity: input_select.hp_set_control_method
+    name: Control Mode
+  - entity: input_number.hp_dhw_target_temperatur
+    name: Brauchwasser
+    icon: kuf:sani_water_hot
+```
+should look like this  
+![image](https://github.com/user-attachments/assets/ee8e1ee6-e58f-4d5e-a39d-bf918f096a0c)
+
 ## Heatpump <a name="heatpump"></a>
 **Hardware settings**  
 Wire connection between heatpump and gateway.  
@@ -87,6 +102,8 @@ It is also required to set some options on the inside LG head unit (LG RS3).
 2. ...
 
 ![image](https://github.com/user-attachments/assets/8f63e8f5-6eb2-4a65-a723-41daf5b122db)
+
+
 
 **That’s it! You can now control the heat pump from Homeassistant.**
 
