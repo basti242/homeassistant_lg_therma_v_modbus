@@ -33,8 +33,8 @@ With this integration, you are able to controll nearly all settings of your heat
 ![IMG_4261](https://github.com/user-attachments/assets/59bbd424-c406-4b6a-b33f-670361443392)
 
 Tested Gateways:
-1. Waveshare RS485 To ETH - tabletop device [basti242](https://github.com/basti242)
-2. Waveshare RS485 To ETH (B) - top-hat rail [fRiMMi83](https://github.com/gRiMMi83)
+1. Waveshare RS485 To ETH - tabletop device - tested by [basti242](https://github.com/basti242)
+2. Waveshare RS485 To ETH (B) - top-hat rail - tested by [fRiMMi83](https://github.com/gRiMMi83)
 
 ## Homeassistant <a name="homeassistant"></a>
 Download the [*modbus_lg_heatpump.yaml*](https://github.com/basti242/homeassistant_lg_therma_v_modbus/blob/main/modbus_lg_heatpump.yaml)
