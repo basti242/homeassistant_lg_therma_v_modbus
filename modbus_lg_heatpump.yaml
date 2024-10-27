@@ -14,12 +14,14 @@ modbus:
       #------------------------------------------
 
       - name: "hp_odu_operation_cycle"
+        unique_id: "modbus.hp_odu_operation_cycle"
         scan_interval: 10
         address: 1
         slave: !secret lg_heatpump_modbus_slave
         input_type: input
 
       - name: hp_inlet_temp
+        unique_id: "modbus.hp_inlet_temp"
         scale: 0.1
         precision: 1
         scan_interval: 30
@@ -30,6 +32,7 @@ modbus:
         input_type: input
 
       - name: "hp_outlet_temp"
+        unique_id: "modbus.hp_outlet_temp"
         scale: 0.1
         precision: 1
         scan_interval: 30
@@ -40,6 +43,7 @@ modbus:
         input_type: input
 
       - name: hp_dhw_water_temp
+        unique_id: "modbus.hp_dhw_water_temp"
         scale: 0.1
         precision: 1
         scan_interval: 30
@@ -50,6 +54,7 @@ modbus:
         input_type: input
 
       - name: "hp_temp_technikraum" # Temperatur Technikraum
+        unique_id: "modbus.hp_temp_technikraum"
         precision: 1
         scan_interval: 10
         address: 7
@@ -60,6 +65,7 @@ modbus:
         input_type: input
 
       - name: "hp_flow_rate"
+        unique_id: "modbus.hp_flow_rate"
         precision: 1
         scale: 0.1
         scan_interval: 10
@@ -69,6 +75,7 @@ modbus:
         input_type: input
 
       - name: "hp_flow_temp_circle_2"
+        unique_id: "modbus.hp_flow_temp_circle_2"
         scale: 0.1
         precision: 1
         scan_interval: 10
@@ -79,6 +86,7 @@ modbus:
         input_type: input
 
       - name: "hp_outside_temp" # Außentemperatur
+        unique_id: "modbus.hp_outside_temp"
         precision: 1
         scan_interval: 10
         address: 12
@@ -89,6 +97,7 @@ modbus:
         input_type: input
 
       - name: temp_liquid_gas # Temperatur Flüssiggas
+        unique_id: "modbus.hp_temp_liquid_gas"
         scan_interval: 10
         address: 16
         unit_of_measurement: "°C"
@@ -96,6 +105,7 @@ modbus:
         input_type: input
 
       - name: temp_suction # Temperatur Absaugung
+        unique_id: "modbus.hp_temp_suction"
         scan_interval: 2
         address: 18
         unit_of_measurement: °C
@@ -103,12 +113,14 @@ modbus:
         input_type: input
 
       - name: temp_heatgas # Heißgastemperatur
+        unique_id: "hp_modbus.temp_heatgas"
         address: 19
         unit_of_measurement: °C
         slave: !secret lg_heatpump_modbus_slave
         input_type: input
 
       - name: temp_before_vaporiser # Dampftemperatur vor Verdampfer
+        unique_id: "modbus.hp_temp_before_vaporiser"
         precision: 1
         scan_interval: 10
         address: 20
@@ -119,6 +131,7 @@ modbus:
         input_type: input
 
       - name: temp_after_vaporiser # Dampftemperatur nach Verdampfer
+        unique_id: "modbus.hp_temp_after_vaporiser"
         precision: 1
         scan_interval: 10
         address: 21
@@ -129,18 +142,21 @@ modbus:
         input_type: input
 
       - name: hight_pressure # Dampfdruck Kondensator
+        unique_id: "hp_modbus.high_pressure"
         address: 22
         unit_of_measurement: Bar
         slave: !secret lg_heatpump_modbus_slave
         input_type: input
 
       - name: low_pressure # Dampfdruck Verdampfer
+        unique_id: "modbus.hp_low_pressure"
         address: 23
         unit_of_measurement: Bar
         slave: !secret lg_heatpump_modbus_slave
         input_type: input
 
       - name: hp_compressor_rpm # Kompressordrehzahl
+        unique_id: "modbus.hp_compressor_rpm"
         scale: 60
         precision: 0.1
         scan_interval: 10
@@ -150,6 +166,7 @@ modbus:
         input_type: input
 
       - name: "hp_product_info" # Produktinfos
+        unique_id: "modbus.hp_product_info"
         scan_interval: 60
         address: 9998
         slave: !secret lg_heatpump_modbus_slave
@@ -159,18 +176,21 @@ modbus:
       #------------------------------------------
 
       - name: hp_operation_mode
+        unique_id: "modbus.hp_operation_mode"
         scan_interval: 60
         address: 0
         slave: !secret lg_heatpump_modbus_slave
         input_type: holding
 
       - name: hp_control_method
+        unique_id: "modbus.hp_control_method"
         scan_interval: 60
         address: 1
         slave: !secret lg_heatpump_modbus_slave
         input_type: holding
 
       - name: hp_target_temp_circuit1 #Zieltemperatur HK1 (Heizkörper)
+        unique_id: "modbus.hp_target_temp_circuit1"
         scale: 0.1
         precision: 1
         scan_interval: 30
@@ -180,6 +200,7 @@ modbus:
         input_type: holding
 
       - name: hp_shift_value_in_auto_mode_circuit1 #Sollwertverschiebung HK1 (Heizkörper)
+        unique_id: "modbus.hp_shift_value_in_auto_mode_circuit1"
         precision: 1 #test
         scan_interval: 30
         address: 4
@@ -189,6 +210,7 @@ modbus:
         input_type: holding
 
       - name: hp_target_temp_circuit2 #Zieltemperatur HK2 (Fußbodenheizung)
+        unique_id: "modbus.hp_target_temp_circuit2"
         scale: 0.1
         precision: 1
         scan_interval: 30
@@ -198,6 +220,7 @@ modbus:
         input_type: holding
 
       - name: hp_shift_value_in_auto_mode_circuit2 #Sollwertverschiebung HK2 (Fußbodenheizung)
+        unique_id: "modbus.hp_shift_value_in_auto_mode_circuit2"
         precision: 1 #test
         scan_interval: 30
         address: 7
@@ -207,6 +230,7 @@ modbus:
         input_type: holding
 
       - name: hp_dhw_target_temp #DHW Zieltemperatur
+        unique_id: "modbus.hp_dhw_target_temp"
         scale: 0.1
         precision: 1
         scan_interval: 30
@@ -216,6 +240,7 @@ modbus:
         input_type: holding
 
       - name: hp_energy_state_input_raw
+        unique_id: "modbus.hp_energy_state_input_raw"
         slave: !secret lg_heatpump_modbus_slave
         scan_interval: 10
         address: 9 # reg 10
@@ -226,6 +251,7 @@ modbus:
       # coil_register (binäre Daten, nur schreiben)
       # -------------------------------------------------
       - name: "hp_hauptschalter" # Wärmepumpe an/aus
+        unique_id: "modbus.hp_hauptschalter"
         slave: !secret lg_heatpump_modbus_slave
         address: 0
         write_type: coil
@@ -238,6 +264,7 @@ modbus:
           state_off: 0
 
       - name: "hp_dhw" # Warmwasserbereitung an/aus
+        unique_id: "modbus.hp_dhw"
         slave: !secret lg_heatpump_modbus_slave
         address: 1
         write_type: coil
@@ -250,6 +277,7 @@ modbus:
           state_off: 0
 
       - name: "hp_silent_mode" # Ruhemodus an/aus
+        unique_id: "modbus.hp_silent_mode"
         slave: !secret lg_heatpump_modbus_slave
         address: 2
         write_type: coil
@@ -262,6 +290,7 @@ modbus:
           state_off: 0
 
       - name: "hp_dhw_desinfection_mode" # Desinfektionsmodus an/aus
+        unique_id: "modbus.hp_dhw_desinfection_mode"
         slave: !secret lg_heatpump_modbus_slave
         address: 3
         write_type: coil
@@ -278,96 +307,112 @@ modbus:
       # discrete_input (binäre Daten, nur lesen)
       # -----------------------------------------
       - name: hp_water_flow_status
+        unique_id: "modbus.hp_water_flow_status"
         scan_interval: 30
         address: 0
         slave: !secret lg_heatpump_modbus_slave
         input_type: discrete_input
 
       - name: hp_water_pump_status
+        unique_id: "modbus.hp_water_pump_status"
         scan_interval: 30
         address: 1
         slave: !secret lg_heatpump_modbus_slave
         input_type: discrete_input
 
       - name: hp_ext_water_pump_status
+        unique_id: "modbus.hp_ext_water_pump_status"
         scan_interval: 30
         address: 2
         slave: !secret lg_heatpump_modbus_slave
         input_type: discrete_input
 
       - name: hp_compressor_status
+        unique_id: "modbus.hp_compressor_status"
         scan_interval: 30
         address: 3
         slave: !secret lg_heatpump_modbus_slave
         input_type: discrete_input
 
       - name: hp_defrosting_status
+        unique_id: "modbus.hp_defrosting_status"
         scan_interval: 30
         address: 4
         slave: !secret lg_heatpump_modbus_slave
         input_type: discrete_input
 
       - name: hp_dhw_heating_status
+        unique_id: "modbus.hp_dhw_heating_status"
         scan_interval: 30
         address: 5
         slave: !secret lg_heatpump_modbus_slave
         input_type: discrete_input
 
       - name: hp_dhw_tank_desinfection_status
+        unique_id: "modbus.hp_dhw_tank_desinfection_status"
         scan_interval: 30
         address: 6
         slave: !secret lg_heatpump_modbus_slave
         input_type: discrete_input
 
       - name: hp_silent_mode_status
+        unique_id: "modbus.hp_silent_mode_status"
         scan_interval: 30
         address: 7
         slave: !secret lg_heatpump_modbus_slave
         input_type: discrete_input
 
       - name: hp_cooling_status
+        unique_id: "modbus.hp_cooling_status"
         scan_interval: 30
         address: 8
         slave: !secret lg_heatpump_modbus_slave
         input_type: discrete_input
 
       - name: hp_backup_heater_step1_status
+        unique_id: "modbus.hp_backup_heater_step1_status"
         scan_interval: 30
         address: 10
         slave: !secret lg_heatpump_modbus_slave
         input_type: discrete_input
 
       - name: hp_backup_heater_step2_status
+        unique_id: "modbus.hp_backup_heater_step2_status"
         scan_interval: 30
         address: 11
         slave: !secret lg_heatpump_modbus_slave
         input_type: discrete_input
 
       - name: hp_dhw_boost_heater_status
+        unique_id: "modbus.hp_dhw_boost_heater_status"
         scan_interval: 30
         address: 12
         slave: !secret lg_heatpump_modbus_slave
         input_type: discrete_input
 
       - name: hp_error_status
+        unique_id: "modbus.hp_error_status"
         scan_interval: 30
         address: 13
         slave: !secret lg_heatpump_modbus_slave
         input_type: discrete_input
 
       - name: hp_emergency_operation_available_space_heating/cooling
+        unique_id: "modbus.hp_emergency_operation_available_space_heating_cooling"
         scan_interval: 30
         address: 14
         slave: !secret lg_heatpump_modbus_slave
         input_type: discrete_input
 
       - name: hp_emergency_operation_available_dhw
+        unique_id: "modbus.hp_emergency_operation_available_dhw"
         scan_interval: 30
         address: 15
         slave: !secret lg_heatpump_modbus_slave
         input_type: discrete_input
 
       - name: hp_mix_pump_status
+        unique_id: "modbus.hp_mix_pump_status"
         scan_interval: 30
         address: 16
         slave: !secret lg_heatpump_modbus_slave
