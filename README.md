@@ -38,10 +38,11 @@ With this integration, you are able to controll nearly all settings of your heat
 
 Tested Gateways:
 
-Device                       | Type                | Tested by                                | Link
---------                     | --------            | --------                                 | --------
-Waveshare RS485 To ETH       | tabletop device     | [basti242](https://github.com/basti242)  | [Amazon](https://amzn.eu/d/9hwIM75)
-Waveshare RS485 To ETH (B)   | top-hat rail        | [fRiMMi83](https://github.com/gRiMMi83)  | [Amazon](https://amzn.eu/d/4nqkfNH)
+Device                          | Type                | Tested by                                   | Link
+--------                        | --------            | --------                                    | --------
+Waveshare RS485 To ETH          | tabletop device     | [basti242](https://github.com/basti242)     | [Amazon](https://amzn.eu/d/9hwIM75)
+Waveshare RS485 To ETH (B)      | top-hat rail        | [fRiMMi83](https://github.com/gRiMMi83)     | [Amazon](https://amzn.eu/d/4nqkfNH)
+WaveShare RS232-485-TO-WIFI-ETH | tabletop device     | [BigCabbage](https://github.com/BigCabbage) | [Amazon](https://amzn.eu/d/2aOHsr5)
 
 
 ## Homeassistant <a name="homeassistant"></a>
