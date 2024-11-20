@@ -48,7 +48,12 @@ WaveShare RS232-485-TO-WIFI-ETH | tabletop device     | [BigCabbage](https://git
 
 
 ## Homeassistant <a name="homeassistant"></a>
+
+[Overview availiable Modbus Register](https://docs.google.com/spreadsheets/d/1nzYJzj6M_eGvW1HD7guehZE_RDtn0w31KEogzJ0uoaY/edit?usp=sharing)
+
 Download the [*modbus_lg_heatpump.yaml*](https://github.com/basti242/homeassistant_lg_therma_v_modbus/blob/main/modbus_lg_heatpump.yaml)
+
+
 
 Put the file in a folder named *integrations*. Create the folder if not exist.
 
