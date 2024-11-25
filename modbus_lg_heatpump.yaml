@@ -114,8 +114,8 @@ modbus:
         unit_of_measurement: °C
         input_type: input
 
-      - name: "hp_room_air_temp_circuit2"
-        unique_id: "modbus.hp_room_air_temp_circuit2"
+      - name: "hp_room_air_temp_circuit2_input"
+        unique_id: "modbus.hp_room_air_temp_circuit2_input"
         precision: 1
         scan_interval: 10
         address: 10 # reg 11
