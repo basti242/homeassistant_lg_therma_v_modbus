@@ -267,42 +267,22 @@ template:
             0
           {% endif %}
 
-  - binary_sensor:
-      - name: "HP Energy State - Nicht verwenden"
-        unique_id: "hp_energy_state_nicht_verwenden"
-        state: "{{ states('sensor.hp_energy_state_input_raw')|int(default=0) == 0 }}"
-
-      - name: "HP Energy State - Erzwungen Aus"
-        unique_id: "hp_energy_state_erzwungen_aus"
-        state: "{{ states('sensor.hp_energy_state_input_raw')|int(default=0) == 1 }}"
-
-      - name: "HP Energy State - Normalbetrieb"
-        unique_id: "hp_energy_state_normalbetrieb"
-        state: "{{ states('sensor.hp_energy_state_input_raw')|int(default=0) == 2 }}"
-
-      - name: "HP Energy State - Ein-Empfehlung"
-        unique_id: "hp_energy_state_ein_empfehlung"
-        state: "{{ states('sensor.hp_energy_state_input_raw')|int(default=0) == 3 }}"
-
-      - name: "HP Energy State - Ein-Befehl"
-        unique_id: "hp_energy_state_ein_befehl"
-        state: "{{ states('sensor.hp_energy_state_input_raw')|int(default=0) == 4 }}"
-
-      - name: "HP Energy State - Ein-Befehl Schritt 2"
-        unique_id: "hp_energy_state_ein_befehl_schritt_2"
-        state: "{{ states('sensor.hp_energy_state_input_raw')|int(default=0) == 5 }}"
-
-      - name: "HP Energy State - Ein-Empfehlung Schritt 1"
-        unique_id: "hp_energy_state_ein_empfehlung_befehl_schritt_1"
-        state: "{{ states('sensor.hp_energy_state_input_raw')|int(default=0) == 6 }}"
-
-      - name: "HP Energy State - Energiesparmodus"
-        unique_id: "hp_energy_state_ein_energiesparmodus"
-        state: "{{ states('sensor.hp_energy_state_input_raw')|int(default=0) == 7 }}"
-
-      - name: "HP Energy State - Superenergiesparmodus"
-        unique_id: "hp_energy_state_ein_superenergiesparmodus"
-        state: "{{ states('sensor.hp_energy_state_input_raw')|int(default=0) == 8 }}"
+  - sensor:
+      - name: "HP Energy State"
+        unique_id: "hp_energy_state_label"
+        state: >
+            {% set v = states('sensor.hp_energy_state_input_raw') | int(-1) %}
+            {% if v == 0 %} Nicht verwenden
+            {% elif v == 1 %} Erzwungen Aus
+            {% elif v == 2 %} Normalbetrieb
+            {% elif v == 3 %} Ein-Empfehlung
+            {% elif v == 4 %} Ein-Befehl
+            {% elif v == 5 %} Ein-Befehl Schritt 2
+            {% elif v == 6 %} Ein-Empfehlung Schritt 1
+            {% elif v == 7 %} Energiesparmodus
+            {% elif v == 8 %} Superenergiesparmodus
+            {% else %} Unknown
+            {% endif %}
 
 automation:
   - id: "hp_automation_set_shift_value_in_auto_mode_circuit1_input_slider_update"
