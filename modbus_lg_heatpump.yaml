@@ -403,6 +403,7 @@ modbus:
         slave: 1
         scan_interval: 60
 
+      #------------------------------------------
       # Holding Register
       #------------------------------------------
 
@@ -444,9 +445,9 @@ modbus:
         unique_id: "modbus.hp_shift_value_in_auto_mode_circuit1"
         address: 4 # reg 40005
         input_type: holding
-        #data_type: int16
         slave: 1
-        precision: 2 #test
+        scale: 1
+        precision: 2
         unit_of_measurement: °C
         scan_interval: 10
 
@@ -475,7 +476,8 @@ modbus:
         address: 7 # reg 40008
         input_type: holding
         slave: 1
-        precision: 2 #test
+        scale: 1
+        precision: 2
         unit_of_measurement: °C
         scan_interval: 10
 
