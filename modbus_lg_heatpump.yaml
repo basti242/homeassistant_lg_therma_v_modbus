@@ -12,9 +12,11 @@ modbus:
     parity: N
     stopbits: 1
 
-    #------------------------------------------
+#------------------------------------------------
+
     sensors:
-      # Technische Daten
+
+      #------------------------------------------
       # Input Register
       #------------------------------------------
 
@@ -394,14 +396,14 @@ modbus:
         address: 9997
         input_type: input
         slave: 1
-        scan_interval: 60
+        scan_interval: 3600
 
       - name: "hp_product_info" # Produktinfos
         unique_id: "modbus.hp_product_info"
         address: 9998
         input_type: input
         slave: 1
-        scan_interval: 60
+        scan_interval: 3600
 
       #------------------------------------------
       # Holding Register
@@ -520,9 +522,13 @@ modbus:
         scan_interval: 10
 
     # -------------------------------------------------
+    
     switches:
-      # coil_register (binäre Daten, nur schreiben)
-      # -------------------------------------------------
+    
+      #------------------------------------------
+      # Coil Register (0x01) (binary Data, write only)
+      #------------------------------------------
+
       - name: "hp_hauptschalter" # Wärmepumpe an/aus
         unique_id: "modbus.hp_hauptschalter"
         address: 0
@@ -614,10 +620,12 @@ modbus:
           state_on: 1
           state_off: 0
 
-    # -----------------------------------------
     binary_sensors:
-      # discrete_input (binäre Daten, nur lesen)
+
+      #------------------------------------------
+      # Discrete Register (0x02) (binary Data, read only)
       # -----------------------------------------
+
       - name: "hp_water_flow_status"
         unique_id: "modbus.hp_water_flow_status"
         address: 0
@@ -738,8 +746,11 @@ modbus:
         scan_interval: 10
 
 input_number:
-  # Input Number
-  # -----------------------------------------
+
+      # -----------------------------------------
+      # Input Number
+      # -----------------------------------------
+  
   hp_shift_value_in_auto_mode_circuit1:
     name: "Set HP Sollwertverschiebung im AI Modus - HK1 (Heizkörper)"
     min: -5
@@ -777,8 +788,11 @@ input_number:
     step: 1
 
 input_select:
-  # Input Select
-  # -----------------------------------------
+
+      # -----------------------------------------
+      # Input Select
+      # -----------------------------------------
+
   hp_set_operation_mode:
     name: "Selector Heatpump Operation Mode"
     options:
@@ -794,8 +808,10 @@ input_select:
       - "Raumluftsteuerung"
 
 template:
-  # Template sensors for better readability
-  #-----------------------------------------
+
+      # -----------------------------------------
+      # Template sensors for better readability
+      # -----------------------------------------
   - sensor:
       - name: "HP Energy State"
         unique_id: "hp_energy_state_label"
