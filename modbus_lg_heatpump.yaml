@@ -602,7 +602,7 @@ template:
           data:
             hub: lg_heatpump
             slave: !secret lg_heatpump_modbus_slave
-            address: 9
+            address: 0
             value: >
               {% set reverse_mapping = {
                 'Cooling': 0,
@@ -617,7 +617,7 @@ template:
         {{ [
           'Water Outlet Temperature Control', 
           'Water Inlet Temperature Control', 
-          'Room Air Control'',
+          'Room Air Control',
         ] }}
       state: >
         {% set raw = states('sensor.hp_control_method_raw') %}
@@ -637,7 +637,7 @@ template:
           data:
             hub: lg_heatpump
             slave: !secret lg_heatpump_modbus_slave
-            address: 9
+            address: 1
             value: >
               {% set reverse_mapping = {
                 'Water Outlet Temperature Control': 0,
@@ -661,7 +661,7 @@ template:
           'Super Power Saving Mode'
         ] }}
       state: >
-        {% set raw = states('sensor.hp_energy_state_raw') %}
+        {% set raw = states('sensor.hp_energy_state_input') %}
         {% if raw in ['unavailable', 'unknown', 'none'] %}
           unavailable
         {% else %}
