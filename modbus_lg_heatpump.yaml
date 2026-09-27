@@ -148,16 +148,21 @@ modbus:
       - name: "hp_water_pressure"
         unique_id: "modbus.hp_water_pressure"
         scan_interval: 10
-        address: 12 # 30013
+        address: 13 # 30014 - war faelschlich 12 (= 30013, Aussenlufttemp,
+                    # kollidierte mit hp_outside_temp)
         slave: !secret lg_heatpump_modbus_slave
         device_class: pressure
         unit_of_measurement: Bar
+        scale: 0.1
+        state_class: measurement
         input_type: input
 
       - name: "hp_temp_liquid_gas"
         unique_id: "modbus.hp_temp_liquid_gas"
         scan_interval: 10
         address: 16 # 30017
+        scale: 0.1 # fehlte - Register liefert Zehntelgrad wie Nachbarregister 20/21
+        precision: 1
         device_class: temperature
         unit_of_measurement: "°C"
         slave: !secret lg_heatpump_modbus_slave
@@ -167,6 +172,8 @@ modbus:
         unique_id: "modbus.hp_temp_suction"
         scan_interval: 2
         address: 18 # 30019
+        scale: 0.1 # fehlte - Register liefert Zehntelgrad wie Nachbarregister 20/21
+        precision: 1
         device_class: temperature
         unit_of_measurement: °C
         slave: !secret lg_heatpump_modbus_slave
@@ -175,6 +182,8 @@ modbus:
       - name: "hp_temp_heatgas" # Heißgastemperatur
         unique_id: "hp_modbus.temp_heatgas"
         address: 19
+        scale: 0.1 # fehlte - Register liefert Zehntelgrad wie Nachbarregister 20/21
+        precision: 1
         device_class: temperature
         unit_of_measurement: °C
         slave: !secret lg_heatpump_modbus_slave
@@ -205,6 +214,13 @@ modbus:
       - name: "hp_high_pressure" # Dampfdruck Kondensator
         unique_id: "hp_modbus.high_pressure"
         address: 22
+        # scale: Register lieferte ohne Skalierung physikalisch unmoegliche
+        # Werte (>150 Bar). 0.01 an einer LG Therma V Monoblock 9kW bei
+        # stehendem und laufendem Kompressor bestaetigt (Druckausgleich im
+        # Stillstand, plausible Heizbetrieb-Werte im Betrieb). Bei anderen
+        # Modellen/Generationen bitte gegenpruefen.
+        scale: 0.01
+        precision: 2
         device_class: pressure
         unit_of_measurement: Bar
         slave: !secret lg_heatpump_modbus_slave
@@ -213,6 +229,9 @@ modbus:
       - name: "hp_low_pressure" # Dampfdruck Verdampfer
         unique_id: "modbus.hp_low_pressure"
         address: 23
+        # scale: siehe hp_high_pressure oben.
+        scale: 0.01
+        precision: 2
         device_class: pressure
         unit_of_measurement: Bar
         slave: !secret lg_heatpump_modbus_slave
