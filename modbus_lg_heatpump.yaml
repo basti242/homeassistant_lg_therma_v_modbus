@@ -37,6 +37,7 @@ modbus:
         slave: !secret lg_heatpump_modbus_slave
         unit_of_measurement: °C
         device_class: temperature
+        state_class: measurement
         input_type: input
 
       - name: "hp_outlet_temp"
@@ -48,6 +49,7 @@ modbus:
         slave: !secret lg_heatpump_modbus_slave
         unit_of_measurement: °C
         device_class: temperature
+        state_class: measurement
         input_type: input
 
       - name: "hp_backup_heater_outlet_temp"
@@ -70,6 +72,7 @@ modbus:
         slave: !secret lg_heatpump_modbus_slave
         unit_of_measurement: °C
         device_class: temperature
+        state_class: measurement
         input_type: input
 
       - name: "hp_solar_collector_temp"
@@ -92,6 +95,7 @@ modbus:
         scale: 0.1
         device_class: temperature
         unit_of_measurement: "°C"
+        state_class: measurement
         input_type: input
 
       - name: "hp_flow_rate"
@@ -103,6 +107,7 @@ modbus:
         slave: !secret lg_heatpump_modbus_slave
         device_class: volume_flow_rate
         unit_of_measurement: "l/min"
+        state_class: measurement
         input_type: input
 
       - name: "hp_flow_temp_circle_2"
@@ -114,6 +119,7 @@ modbus:
         slave: !secret lg_heatpump_modbus_slave
         device_class: temperature
         unit_of_measurement: °C
+        state_class: measurement
         input_type: input
 
       - name: "hp_room_air_temp_circuit2_input"
@@ -143,6 +149,7 @@ modbus:
         scale: 0.1
         device_class: temperature
         unit_of_measurement: "°C"
+        state_class: measurement
         input_type: input
 
       - name: "hp_water_pressure"
@@ -166,6 +173,7 @@ modbus:
         device_class: temperature
         unit_of_measurement: "°C"
         slave: !secret lg_heatpump_modbus_slave
+        state_class: measurement
         input_type: input
 
       - name: "hp_temp_suction" # Temperatur Absaugung
@@ -177,6 +185,7 @@ modbus:
         device_class: temperature
         unit_of_measurement: °C
         slave: !secret lg_heatpump_modbus_slave
+        state_class: measurement
         input_type: input
 
       - name: "hp_temp_heatgas" # Heißgastemperatur
@@ -187,6 +196,7 @@ modbus:
         device_class: temperature
         unit_of_measurement: °C
         slave: !secret lg_heatpump_modbus_slave
+        state_class: measurement
         input_type: input
 
       - name: "hp_temp_before_vaporiser" # Dampftemperatur vor Verdampfer
@@ -198,6 +208,7 @@ modbus:
         device_class: temperature
         unit_of_measurement: "°C"
         slave: !secret lg_heatpump_modbus_slave
+        state_class: measurement
         input_type: input
 
       - name: "hp_temp_after_vaporiser" # Dampftemperatur nach Verdampfer
@@ -209,6 +220,7 @@ modbus:
         device_class: temperature
         unit_of_measurement: "°C"
         slave: !secret lg_heatpump_modbus_slave
+        state_class: measurement
         input_type: input
 
       - name: "hp_high_pressure" # Dampfdruck Kondensator
@@ -224,6 +236,7 @@ modbus:
         device_class: pressure
         unit_of_measurement: Bar
         slave: !secret lg_heatpump_modbus_slave
+        state_class: measurement
         input_type: input
 
       - name: "hp_low_pressure" # Dampfdruck Verdampfer
@@ -235,6 +248,7 @@ modbus:
         device_class: pressure
         unit_of_measurement: Bar
         slave: !secret lg_heatpump_modbus_slave
+        state_class: measurement
         input_type: input
 
       - name: "hp_compressor_rpm" # Kompressordrehzahl
@@ -245,6 +259,7 @@ modbus:
         address: 24
         slave: !secret lg_heatpump_modbus_slave
         unit_of_measurement: U/min
+        state_class: measurement
         input_type: input
 
       - name: "hp_product_info" # Produktinfos
