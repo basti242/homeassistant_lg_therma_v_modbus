@@ -1,3 +1,8 @@
+## Update
+
+Use this for newer HA installations:
+https://github.com/isarrider/ha-lg-therma-v-modbus
+
 ## Description
 This package is for connecting and controlling an LG Therma V heat pump with Homeassistant via Modbus RTU.  
 
