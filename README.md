@@ -1,3 +1,9 @@
+> [!WARNING]
+> **This repository is deprecated and no longer maintained.**
+> It has been replaced by the **[LG Heat Pump integration](https://github.com/lg-heatpump/lg_heatpump)** (UI setup, no YAML, available in the Home Assistant Marketplace/HACS, requires Home Assistant 2026.9 or newer). The register map now lives in the device library [lg-heatpump-modbus](https://github.com/lg-heatpump/lg-heatpump-modbus).
+>
+> Please open new issues and pull requests in [lg-heatpump/lg_heatpump](https://github.com/lg-heatpump/lg_heatpump/issues). This YAML package keeps working on existing installations, but it will receive no further updates. Note that the YAML package and the integration must not talk to the heat pump at the same time (a Modbus device answers one request at a time), so remove the package when you switch.
+
 # LG Therma V ↔ Home Assistant (Modbus)
 
 Connect and control an LG Therma V heat pump in Home Assistant via Modbus — no cloud, no vendor bridge, just a Modbus TCP gateway and this package.
